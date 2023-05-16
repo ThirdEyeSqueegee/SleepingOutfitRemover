@@ -18,6 +18,7 @@ namespace SleepingOutfitRemover
         {
             foreach (var npc in state.LoadOrder.PriorityOrder.Npc().WinningContextOverrides())
             {
+                if (!npc.Record.Template.IsNull) continue;
                 var newNpc = state.PatchMod.Npcs.GetOrAddAsOverride(npc.Record);
                 newNpc.SleepingOutfit.SetToNull();
                 if (newNpc.Equals(npc.Record))
